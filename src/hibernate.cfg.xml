@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 
+		一个sessionFactory代表数据库的一个连接
+	-->
+	<session-factory>
+		<!-- 链接数据库的用户名 -->
+		<property name="connection.username">root</property>
+		<!-- 链接数据库的密码 -->
+		<property name="connection.password">root</property>
+		<!-- 链接数据库的驱动 -->
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<!-- 链接数据库的url -->
+		<property name="connection.url">
+			jdbc:mysql://localhost:3306/itheima12_hibernate
+		</property>
+
+		<!-- 
+			方言
+			告诉hibernate使用什么样的数据库，hibernate就会在底层拼接什么样的sql语句
+		-->
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<!-- 
+			根据持久化类生成表的策略
+			validate   通过映射文件检查持久化类与表的匹配
+			update   每次hibernate启动的时候，检查表是否存在，如果不存在，则创建，如果存在，则什么都不做了
+			create   每一次hibernate启动的时候，根据持久化类和映射文件生成表
+			create-drop
+		-->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<mapping
+			resource="com/itheima12/hibernate/domain/Person.hbm.xml" />
+		<mapping
+			resource="com/itheima12/hibernate/utils/Person.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

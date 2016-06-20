@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 开发模式：每次访问时都会重新读取xml配置文件信息 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.action.extension" value="do"></constant>
+	
+	<package name="p1" extends="struts-default">
+		<action name="helloworld" class="com.itheima.action.HelloWroldAction" method="sayHello">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+	
+</struts>

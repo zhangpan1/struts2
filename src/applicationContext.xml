@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="helloWorld1" class="com.itheima12.spring.createobject.method.HelloWorld"></bean>
+	<bean id="helloWorld" class="com.eversec.zhangpan.HelloWorld"></bean>
+	<!-- 
+		factory-method指的是静态工厂方法
+ 	-->
+	<bean id="helloWorld2" 
+		class="com.itheima12.spring.createobject.method.factory.HelloWorldFactory"
+		factory-method="getInstance"></bean>
+		
+    <bean id="helloWorldFactory" 
+    	class="com.itheima12.spring.createobject.method.factory.HelloWorldFactory2"></bean>
+    
+    <!-- 
+    	factory-bean是一个工厂bean
+    	把
+    	factory-method是一个工厂方法
+     -->	
+     
+    <bean id="helloWorld3" 
+    	factory-bean="helloWorldFactory" 
+    	factory-method="getInstance"></bean>
+</beans>
