@@ -14,6 +14,16 @@
       <version>4.9</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-core</artifactId>
+    <version>5.5.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-analyzers-common</artifactId>
+    <version>5.4.0</version>
+</dependency>
 <dependency>
 <groupId>org.springframework</groupId>
 
