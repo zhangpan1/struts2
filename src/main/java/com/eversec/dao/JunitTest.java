@@ -10,12 +10,12 @@ import com.eversec.bean.Article;
 
 public class JunitTest {
 	private LuceneDao luceneDao = new LuceneDao();
-	//@Test
+	@Test
 	public void addIndex() throws Exception{
-			for (int i = 1; i<=25;i++){
+			for (int i = 25; i<=25;i++){
 				Article article = new Article();
 				article.setId(i);
-				article.setTitle("他不是抑郁症，他仅仅自私却无所得");
+				article.setTitle("他不是抑郁症抑郁症抑郁症抑郁症抑郁症，他仅仅自私却无所得");
 				article.setContent("有人问毕加索：你的画我看不懂，毕加索：鸟叫声好听，好听，听得懂吗？");
 				article.setLink("www.baidu.com");
 				article.setAuthor("张盼");
@@ -23,7 +23,7 @@ public class JunitTest {
 			}
 			
 	}
-	@Test
+	//@Test
 	public void testsearcher() throws Exception{
 		
 		String keywords = "盼哥";

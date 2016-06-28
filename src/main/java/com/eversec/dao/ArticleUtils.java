@@ -24,6 +24,9 @@ public class ArticleUtils {
 		StringField urlfield = new StringField("link", article.getLink(), Store.YES);
 		TextField title = new TextField("title",article.getTitle(),Store.YES);
 		TextField contTextField = new TextField("content",article.getContent(),Store.YES);
+		
+		//title.setBoost(3f);
+		
 		document.add(idfield);
 		document.add(autorefield);
 		document.add(urlfield);
