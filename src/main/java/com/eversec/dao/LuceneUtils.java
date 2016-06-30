@@ -62,4 +62,8 @@ public class LuceneUtils {
 		IndexSearcher indexSearcher = new IndexSearcher(indexReader);
 		return indexSearcher;
 	}
+	public static Object getMatchVersion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -3,13 +3,22 @@ package com.eversec.lucene;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+import javax.management.Query;
+
+import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.LogDocMergePolicy;
-import org.apache.lucene.index.LogMergePolicy;
-import org.apache.lucene.index.MergePolicy;
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.store.IOContext;
+import org.apache.lucene.store.RAMDirectory;
 
 import com.eversec.dao.Contants;
 import com.eversec.dao.LuceneUtils;
@@ -69,9 +78,39 @@ public class TestOptimise {
 		 * 第三种方式
 		 * 索引库分区
 		 */
+			public void testOptimise3(){
+				
+			}
+			
 			
 			/**
 			 * 第四种方式
+			 * @throws IOException 
+			 * @throws ParseException 
 			 * 
 			 */
+			public void testOptimise4() throws IOException, ParseException{
+				//索引在硬盘里面...
+				Directory directory1=FSDirectory.open(Paths.get(""));
+				
+				IOContext ioContext=new IOContext();
+				
+				//索引放在内存当中...
+				Directory directory=new RAMDirectory();
+				
+				IndexReader indexReader=DirectoryReader.open(directory);
+	
+				IndexSearcher indexSearcher=new IndexSearcher(indexReader);
+				
+				String fields []={"title"};
+				
+				QueryParser queryParser=null;//new MultiFieldQueryParser(fields,LuceneUtils.getAnalyzer());
+				//不同的规则构造不同的子类..
+				//title:keywords  ，content:keywords
+				org.apache.lucene.search.Query query=queryParser.parse("抑郁症");
+				
+				TopDocs topDocs=indexSearcher.search(query, 100);
+				
+				System.out.println(topDocs.totalHits);
+			}
 }
